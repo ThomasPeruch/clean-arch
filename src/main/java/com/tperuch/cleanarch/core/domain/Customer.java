@@ -1,7 +1,6 @@
 package com.tperuch.cleanarch.core.domain;
 
 public class Customer {
-
     private Long id;
     private String name;
     private String cpf;
