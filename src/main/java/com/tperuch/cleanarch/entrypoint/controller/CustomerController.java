@@ -1,5 +1,6 @@
 package com.tperuch.cleanarch.entrypoint.controller;
 
+import com.tperuch.cleanarch.core.usecase.DeleteCustomerByIdUseCase;
 import com.tperuch.cleanarch.core.usecase.FindCustomerByIdUseCase;
 import com.tperuch.cleanarch.core.usecase.InsertCustomerUseCase;
 import com.tperuch.cleanarch.core.usecase.UpdateCustomerUseCase;
@@ -26,6 +27,9 @@ public class CustomerController {
     private UpdateCustomerUseCase updateCustomerUseCase;
 
     @Autowired
+    private DeleteCustomerByIdUseCase deleteCustomerUseCase;
+
+    @Autowired
     private CustomerEntrypointMapper customerEntrypointMapper;
 
     @PostMapping
@@ -47,6 +51,12 @@ public class CustomerController {
         customer.setId(id);
         updateCustomerUseCase.update(customer, customerRequest.getZipCode());
         return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable String id) {
+        deleteCustomerUseCase.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
