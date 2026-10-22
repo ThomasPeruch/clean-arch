@@ -1,26 +1,26 @@
 package com.tperuch.cleanarch.core.usecase.impl;
 
 import com.tperuch.cleanarch.core.dataprovider.DeleteCustomerById;
-import com.tperuch.cleanarch.core.dataprovider.FindCustomerById;
 import com.tperuch.cleanarch.core.usecase.DeleteCustomerByIdUseCase;
+import com.tperuch.cleanarch.core.usecase.FindCustomerByIdUseCase;
 
 
 public class DeleteCustomerByIdUseCaseImpl implements DeleteCustomerByIdUseCase {
 
-    private final FindCustomerById findCustomerById;
+    private final FindCustomerByIdUseCase findCustomerByIdUseCase;
     private final DeleteCustomerById deleteCustomerById;
 
     public DeleteCustomerByIdUseCaseImpl(
-            FindCustomerById findCustomerById,
+            FindCustomerByIdUseCase findCustomerByIdUseCase,
             DeleteCustomerById deleteCustomerById) {
-        this.findCustomerById = findCustomerById;
+        this.findCustomerByIdUseCase = findCustomerByIdUseCase;
         this.deleteCustomerById = deleteCustomerById;
     }
 
 
     @Override
     public void delete(String id) {
-        findCustomerById.findById(id);
+        findCustomerByIdUseCase.find(id);
         deleteCustomerById.delete(id);
     }
 }
