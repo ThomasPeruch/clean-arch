@@ -14,6 +14,5 @@ public interface CustomerEntrypointMapper {
     @Mapping(target = "isValidCpf", ignore = true)
     Customer toCustomer(CustomerRequest customerRequest);
 
-    @Mapping(target = "id", ignore = true)
     CustomerResponse toCustomerResponse(Customer customer);
 }

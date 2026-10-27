@@ -14,8 +14,8 @@ public class InsertCustomerUseCaseImpl implements InsertCustomerUseCase {
             SendCPFToValidation sendCPFToValidation,
             InsertCustomer insertCustomer) {
                 this.findAddressByZipCode = findAddressByZipCode;
-                this.insertCustomer = insertCustomer;
                 this.sendCPFToValidation = sendCPFToValidation;
+                this.insertCustomer = insertCustomer;
     }
 
     private FindAddressByZipCode findAddressByZipCode;

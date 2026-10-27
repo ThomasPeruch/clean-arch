@@ -53,7 +53,7 @@ public class CustomerController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable String id) {
         deleteCustomerUseCase.delete(id);
         return ResponseEntity.noContent().build();

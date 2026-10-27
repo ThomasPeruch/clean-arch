@@ -10,7 +10,7 @@ public class FindCustomerByIdUseCaseImpl implements FindCustomerByIdUseCase {
             FindCustomerById findCustomerById){
             this.findCustomerById = findCustomerById;
     }
-    private FindCustomerById findCustomerById;
+    private final FindCustomerById findCustomerById;
 
     @Override
     public Customer find(String id) {
