@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.support.serializer.JacksonJsonDeserializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,9 +25,12 @@ public class KafkaConsumerConfig {
         config.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(GROUP_ID_CONFIG, "peruch");
         config.put(KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        config.put(VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(VALUE_DESERIALIZER_CLASS_CONFIG, JacksonJsonDeserializer.class);
         config.put(AUTO_OFFSET_RESET_CONFIG, "earliest");
-        return new DefaultKafkaConsumerFactory<>(config);
+        return new DefaultKafkaConsumerFactory<>(
+                config,
+                new StringDeserializer(),
+                new JacksonJsonDeserializer<>(CustomerMessage.class));
     }
 
     @Bean

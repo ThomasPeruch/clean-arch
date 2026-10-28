@@ -4,6 +4,7 @@ import com.tperuch.cleanarch.core.domain.Address;
 import com.tperuch.cleanarch.dataprovider.client.response.AddressResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
         name = "FindAddressByZipCodeClient",
@@ -12,5 +13,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface FindAddressByZipCodeClient {
 
     @GetMapping("/{zipCode}")
-    AddressResponse find(String zipCode);
+    AddressResponse find(@PathVariable("zipCode") String zipCode);
 }
